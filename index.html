@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+    #loading,#results{
+      display:none;
+    }
+    </style>
+    <title>Калькулятор калорий</title>
+  </head>
+  <body class="bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mx-auto">
+          <div class="card card-body text-center mt-5">
+
+            <h1 class="heading display-5 pb-4">
+              Калькулятор суточных калорий
+            </h1>
+
+            <form id="calory-form">
+              <!-- Выпадающий список, выбор пола -->
+              <div class="form-group">
+                <div class="dropdown">
+                  <button
+                    type="button"
+                    class="btn btn-dark dropdown-toggle"
+                    data-toggle="dropdown"
+                    id="gender"
+                  >Пол</button>
+                  <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Мужской</a>
+                    <a href="#" class="dropdown-item">Женский</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Поле ввода веса -->
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Вес</span>
+                  </div>
+                  <input
+                    type="number"
+                    placeholder="кг"
+                    id="weight"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+              <!-- Поле ввода роста -->
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Рост</span>
+                  </div>
+                  <input
+                    type="number"
+                    placeholder="см"
+                    id="height"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+          <!-- Поле ввода возраста -->
+          <div class="form-group">
+              <input
+                type="number"
+                placeholder="Возраст (в годах)"
+                id="years"
+                class="form-control"
+              />
+          </div>
+<!-- Range элемент выбора физической активности-->
+          <div class="form-group">
+            <label for="">Уровень вашей физической активности</label>
+            <input type="range" class="custom-range" id="physical-activity" min="1.2" max="2.0" step="0.1" value="1.2">
+            <label for="">1.2 - минимальный уровень физнагрузки или полное ее отсутствие (сидячая работа, отсутствие спорта)</label>
+          </div>
+<!--Кнопка отправки формы  -->
+          <div class="form-group">
+            <input type="submit" value="Посчитать калории" class="btn btn-success btn-block">
+          </div>
+
+<!-- Анимация подсчёта -->
+<div id="loading">
+  <img src="img/loading.gif" alt="">
+</div>
+
+<!-- Результат -->
+<div id="results" class="mt-4">
+  <h4 class="mb-3">Результат</h4>
+  <p class="mb-3 pl-5 pr-5">Количество килокалорий, рекомендуемое к потреблению, в сутки</p>
+  <h6 class="text-left mb-3">Ваша цель:</h6>
+
+
+
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">сохранить вес</span>
+    </div>
+    <input type="text" id="save-weight" class="form-control" disabled>
+    <div class="input-group-append">
+      <span class="input-group-text">ккал</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">похудеть</span>
+    </div>
+    <input type="text" id="loose-weight" class="form-control" disabled>
+    <div class="input-group-append">
+      <span class="input-group-text">ккал</span>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">набрать килограммы</span>
+    </div>
+    <input type="text" id="increase-weight" class="form-control" disabled>
+    <div class="input-group-append">
+      <span class="input-group-text">ккал</span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
